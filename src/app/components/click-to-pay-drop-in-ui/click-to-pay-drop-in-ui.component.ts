@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CaptureContextResponseBody } from '../../models/capture-context-response-body';
 import { CaptureContextService } from '../../services/capture-context.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { CommonModule } from '@angular/common';
 
@@ -10,7 +10,9 @@ import { CommonModule } from '@angular/common';
   templateUrl: './click-to-pay-drop-in-ui.component.html',
   styleUrl: './click-to-pay-drop-in-ui.component.scss',
   standalone: true,
-  imports: [CommonModule, HttpClientModule],
+  imports: [
+    CommonModule,
+  ],
   providers: [
     CaptureContextService,
   ]

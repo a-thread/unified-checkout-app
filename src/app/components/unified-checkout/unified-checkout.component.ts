@@ -3,24 +3,23 @@ import { JwtProcessorService } from '../../services/jwt-processor.service';
 import { PayerAuthenticationService } from '../../services/payer-authentication.service';
 import { PaymentCredentialsService } from '../../services/payment-credentials.service';
 import { PaymentsService } from '../../services/payments.service';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
 import { CommonModule } from '@angular/common';
-import { JwtHelperService } from '@auth0/angular-jwt';
 
 @Component({
   selector: 'app-unified-checkout',
   templateUrl: './unified-checkout.component.html',
   styleUrl: './unified-checkout.component.scss',
   standalone: true,
-  imports: [CommonModule],
+  imports: [
+    CommonModule,
+  ],
   providers: [
     JwtProcessorService,
     PayerAuthenticationService,
     PaymentCredentialsService,
     PaymentsService,
-    HttpClientModule,
-    JwtHelperService,
   ]
 })
 export class UnifiedCheckoutComponent implements OnInit {

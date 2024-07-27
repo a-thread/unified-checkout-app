@@ -1,14 +1,12 @@
 import { Injectable } from '@angular/core';
-import { JwtHelperService } from '@auth0/angular-jwt';
 import CryptoJS from 'crypto-js';
+import { jwtDecode } from 'jwt-decode';
 
 @Injectable({
   providedIn: 'root'
 })
 export class JwtProcessorService {
   private secretKey = 'secret';
-
-  constructor(private jwtHelper: JwtHelperService) {}
 
   generateToken(subject: string): string {
     const header = {
@@ -32,7 +30,7 @@ export class JwtProcessorService {
 
   validateToken(token: string): any {
     try {
-      return this.jwtHelper.decodeToken(token);
+      return jwtDecode(token);
     } catch (error) {
       console.error('Invalid token', error);
       return null;
@@ -40,7 +38,6 @@ export class JwtProcessorService {
   }
 
   private hmacSHA256(data: string, key: string): string {
-    // Implementing HMAC-SHA256 encryption here
     return CryptoJS.HmacSHA256(data, key).toString(CryptoJS.enc.Base64).replace(/=/g, '').replace(/\+/g, '-').replace(/\//g, '_');
   }
 }
