@@ -24,7 +24,7 @@ jobs:
         run: npm ci
 
       - name: Build
-        run: npm run build -- --configuration production --base-href "https://${{ github.repository_owner }}.github.io/${{ github.repository }}/"
+        run: npm run build -- --configuration production --base-href "https://a-thread.github.io/unified-checkout-app/"
 
       - name: Deploy
         if: success()
